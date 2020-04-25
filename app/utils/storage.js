@@ -1,4 +1,5 @@
 function saveState(state) {
+  console.log(state);
   chrome.storage.local.set({ state: JSON.stringify(state) }, (obj) => {
     console.log(obj);
   });
@@ -19,6 +20,7 @@ export default function () {
     const store = next(reducer, initialState);
     store.subscribe(() => {
       const state = store.getState();
+      console.log(state);
       saveState(state);
       setBadge(state.connections);
     });
