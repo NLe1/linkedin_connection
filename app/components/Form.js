@@ -4,14 +4,14 @@ import FormInput from "./FormInput";
 
 export default function Form(props) {
   const handleSubmit = (data) => {
-    if (data !== undefined) {
+    console.log(data);
+    if (Object.keys(data).length > 0) {
       props.addConnection(data);
     }
   };
 
   return (
-    <div className="form-container">
-      {props.connections}
+    <div>
       <FormInput handleSubmit={handleSubmit} />
     </div>
   );

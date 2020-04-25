@@ -1,1 +1,2 @@
 export const ADD_CONNECTION = "ADD_CONNECTION";
+export const GET_CONNECTIONS = "GET_CONNECTIONS";

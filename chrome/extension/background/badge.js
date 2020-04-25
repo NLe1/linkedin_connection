@@ -1,13 +1,13 @@
-chrome.storage.local.get('todos', (obj) => {
-  let todos = obj.todos;
-  if (todos) {
-    todos = JSON.parse(todos);
-    const len = todos.filter(todo => !todo.marked).length;
+chrome.storage.local.get("state", (obj) => {
+  let connections = obj.connections;
+  if (connections) {
+    connections = JSON.parse(connections);
+    const len = connections.length;
     if (len > 0) {
       chrome.browserAction.setBadgeText({ text: len.toString() });
     }
   } else {
     // Initial
-    chrome.browserAction.setBadgeText({ text: '1' });
+    chrome.browserAction.setBadgeText({ text: "0" });
   }
 });

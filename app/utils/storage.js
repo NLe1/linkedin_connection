@@ -1,5 +1,7 @@
 function saveState(state) {
-  chrome.storage.local.set({ state: JSON.stringify(state) });
+  chrome.storage.local.set({ state: JSON.stringify(state) }, (obj) => {
+    console.log(obj);
+  });
 }
 
 // connections unmarked count

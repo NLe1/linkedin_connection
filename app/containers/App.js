@@ -7,7 +7,7 @@ import style from "./App.css";
 
 @connect(
   (state) => ({
-    connections: state.conections,
+    connections: state.connections,
   }),
   (dispatch) => ({
     actions: bindActionCreators(ConnectionActions, dispatch),
@@ -23,7 +23,12 @@ export default class App extends Component {
     const { connections, actions } = this.props;
 
     return (
-      <div className={style.normal}>
+      <div>
+        {/* <ul>
+          {Object.keys(connections).length > 0
+            ? connections.map((connection) => <li>{connection}</li>)
+            : null}
+        </ul> */}
         <Form connections={connections} addConnection={actions.addConnection} />
       </div>
     );

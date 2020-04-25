@@ -1,4 +1,12 @@
-.form {
+button {
+    width: 30px;
+    height: 20px;
+    padding: 5px;
+    background: grey;
+}
+
+
+/* .form {
     max-width: 500px;
     padding: 10px 20px;
     background: #f4f7f8;
@@ -89,4 +97,4 @@
 .form input[type="submit"]:hover,
 .form input[type="button"]:hover {
     background: #109177;
-}
+} */

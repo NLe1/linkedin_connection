@@ -17,6 +17,7 @@ export default function FormInput(props) {
           placeholder="John Doe"
           onChange={(e) => setName(e.target.value)}
         />
+        <hr />
         <input
           className="input"
           name="company"
@@ -24,6 +25,7 @@ export default function FormInput(props) {
           placeholder="Apple Inc."
           onChange={(e) => setCompany(e.target.value)}
         />
+        <hr />
         <input
           className="input"
           name="mutual"
@@ -31,6 +33,8 @@ export default function FormInput(props) {
           placeholder="Marry Doe, Adam Lambert, ..."
           onChange={(e) => setMutual(e.target.value)}
         />
+        <hr />
+
         <input
           className="input"
           name="notes"
@@ -38,7 +42,12 @@ export default function FormInput(props) {
           placeholder="LinkedIn Cold Email, Resume Review ..."
           onChange={(e) => setNotes(e.target.value)}
         />
-        <button type="submit" onClick={props.handleSubmit}>
+        <hr />
+
+        <button
+          type="submit"
+          onClick={() => props.handleSubmit({ name, company, mutual, notes })}
+        >
           Submit
         </button>
       </form>

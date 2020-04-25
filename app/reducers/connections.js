@@ -8,6 +8,9 @@ const actionsMap = {
       connections: [...state.connections, action.payload],
     };
   },
+  [ActionTypes.GET_CONNECTIONS](state, action) {
+    return state;
+  },
 };
 
 export default function connections(state = initialState, action) {
