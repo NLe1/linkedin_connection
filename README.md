@@ -2,17 +2,10 @@
 
 [react-chrome-extension-boilerplate](https://github.com/duo-labs/chrome-extension-boilerplate)\
 
-#### Popup
+#### Demo
 
-![Popup](https://cloud.githubusercontent.com/assets/3001525/14128490/dc05e9f8-f653-11e5-9de6-82d1de01844a.gif)
+[![](http://img.youtube.com/vi/yInhJtQkjcw/0.jpg)](http://www.youtube.com/watch?v=yInhJtQkjcw "")
 
-The `todos` state will be saved to `chrome.storage.local`.
-
-#### Window
-
-![Window](https://cloud.githubusercontent.com/assets/3001525/14128489/da176b62-f653-11e5-9bff-fefc35232358.gif)
-
-The context menu is created by [chrome/extension/background/contextMenus.js](chrome/extension/background/contextMenus.js).
 
 #### Inject page
 
