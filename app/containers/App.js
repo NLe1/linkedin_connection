@@ -1,32 +1,32 @@
 import React, { Component, PropTypes } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import Header from "../components/Header";
-import MainSection from "../components/MainSection";
-import * as TodoActions from "../actions/todos";
-import style from "./App.css";
+import Form from "../components/Form";
+import ConnectionList from "../components/ConnectionList";
+import * as ConnectionActions from "../actions/connections";
+import "./App.css";
 
 @connect(
   (state) => ({
-    todos: state.todos,
+    connections: state.connections,
   }),
   (dispatch) => ({
-    actions: bindActionCreators(TodoActions, dispatch),
+    actions: bindActionCreators(ConnectionActions, dispatch),
   })
 )
 export default class App extends Component {
   static propTypes = {
-    todos: PropTypes.array.isRequired,
+    connections: PropTypes.array.isRequired,
     actions: PropTypes.object.isRequired,
   };
 
   render() {
-    const { todos, actions } = this.props;
+    const { connections, actions } = this.props;
 
     return (
-      <div className={style.normal}>
-        <Header addTodo={actions.addTodo} />
-        <MainSection todos={todos} actions={actions} />
+      <div>
+        <ConnectionList connections={connections.connections}></ConnectionList>
+        <Form connections={connections} addConnection={actions.addConnection} />
       </div>
     );
   }
