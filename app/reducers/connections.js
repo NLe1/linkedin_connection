@@ -14,7 +14,7 @@ const actionsMap = {
   },
 };
 
-export default function connections(state || initialState, action) {
+export default function connections(state = initialState, action) {
   const reduceFn = actionsMap[action.type];
   if (!reduceFn) return state;
   return reduceFn(state, action);
