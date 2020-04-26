@@ -1,20 +1,21 @@
 import React from "react";
-import connections from "../reducers/connections";
 import EmailItem from "./EmailItem.js";
 
-export default function ConnectionList(props) {
+export default function EmailList(props) {
   const renderConnection = (messages) => {
-    console.log(messages);
-    return connections.map((message) => (
+    return messages.map((message) => (
       <EmailItem key={message} message={message}></EmailItem>
     ));
   };
+  console.log(props.messages);
   return (
     <div>
       <h1>List of Email Templates</h1>
-      {props.messages && props.messages.length > 0
-        ? renderConnection(props.messages)
-        : null}
+      <ul>
+        {props.messages && props.messages.length > 0
+          ? renderConnection(props.messages)
+          : null}
+      </ul>
     </div>
   );
 }

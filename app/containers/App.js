@@ -9,7 +9,6 @@ import "./App.css";
 @connect(
   (state) => ({
     connections: state.connections,
-    messages: state.messages,
   }),
   (dispatch) => ({
     actions: bindActionCreators(ConnectionActions, dispatch),
@@ -24,16 +23,24 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      connectionTab: true,
+      currentWindow: "ADD_CONNECTION",
     };
   }
+
+  componentDidUpdate() {
+    console.log(this.props.connections);
+  }
+
+  modifyWindow = (type) => {
+    this.setState({ currentWindow: type });
+  };
 
   render() {
     const { connections, actions } = this.props;
 
     return (
       <div className="container-app">
-        {this.state.connectionTab ? (
+        {this.state.currentWindow === "ADD_CONNECTION" ? (
           <Connections
             connections={connections.connections}
             addConnection={actions.addConnection}
@@ -44,12 +51,13 @@ export default class App extends Component {
             addEmail={actions.addEmail}
           ></Emails>
         )}
-        <button onClick={() => this.setState({ connectionTab: true })}>
+        <button onClick={() => this.modifyWindow("ADD_CONNECTION")}>
           Connection Tab
         </button>
-        <button onClick={() => this.setState({ connectionTab: false })}>
+        <button onClick={() => this.modifyWindow("ADD_MESSAGE")}>
           Email Tab
         </button>
+        <button>Open new Tabs</button>
       </div>
     );
   }
