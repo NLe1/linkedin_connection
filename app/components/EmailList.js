@@ -7,14 +7,28 @@ export default function EmailList(props) {
       <EmailItem key={message} message={message}></EmailItem>
     ));
   };
-  console.log(props.messages);
   return (
     <div>
-      <h1>List of Email Templates</h1>
+      <div style={{ display: "inline" }}>
+        <h1
+          style={{
+            fontSize: "30px",
+            color: "#fff",
+            fontWeight: "bold",
+          }}
+        >
+          Scenario
+        </h1>
+        <button onClick={() => props.modifyWindow("ADD_MESSAGE")}>
+          Add New
+        </button>
+      </div>
       <ul>
-        {props.messages && props.messages.length > 0
-          ? renderConnection(props.messages)
-          : null}
+        {props.messages && props.messages.length > 0 ? (
+          renderConnection(props.messages)
+        ) : (
+          <h3>Wow... Such empty</h3>
+        )}
       </ul>
     </div>
   );

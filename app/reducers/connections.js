@@ -23,6 +23,12 @@ const actionsMap = {
       messages: [...state.messages, action.payload],
     };
   },
+  [ActionTypes.UPDATE_CONNECTION](state, action) {
+    return {
+      ...state,
+      connections: action.payload,
+    };
+  },
   [ActionTypes.GET_CONNECTIONS](state, action) {
     return state;
   },

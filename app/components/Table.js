@@ -1,30 +1,25 @@
-import React from "react";
+import React, { useState, useMemo } from "react";
 import EnhancedTable from "./table/EnhancedTable";
-import makeData from "./makeData";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
-const App = () => {
+const Table = (props) => {
   const columns = React.useMemo(
     () => [
       {
-        Header: "First Name",
-        accessor: "firstName",
-      },
-      {
-        Header: "Last Name",
-        accessor: "lastName",
+        Header: "Name",
+        accessor: "name",
       },
       {
         Header: "Company",
         accessor: "company",
       },
       {
-        Header: "School",
-        accessor: "school",
-      },
-      {
         Header: "Notes",
         accessor: "notes",
+      },
+      {
+        Header: "How did you meet?",
+        accessor: "howToMeet",
       },
       {
         Header: "Last Contact",
@@ -34,8 +29,8 @@ const App = () => {
     []
   );
 
-  const [data, setData] = React.useState(React.useMemo(() => makeData(20), []));
-  const [skipPageReset, setSkipPageReset] = React.useState(false);
+  const [data, setData] = useState(useMemo(() => props.connections || [], []));
+  const [skipPageReset, setSkipPageReset] = useState(false);
 
   // We need to keep the table from resetting the pageIndex when we
   // Update data. So we can keep track of that flag with a ref.
@@ -61,8 +56,12 @@ const App = () => {
 
   return (
     <div>
+      <button onClick={() => props.modifyWindow("SHOW_MESSAGES")}>
+        Message Templates
+      </button>
       <CssBaseline />
       <EnhancedTable
+        updateConnection={props.updateConnection}
         columns={columns}
         data={data}
         setData={setData}
@@ -73,4 +72,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Table;

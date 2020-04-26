@@ -3,7 +3,8 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import * as ConnectionActions from "../actions/connections";
 import Connections from "../components/Connections";
-import Emails from "../components/Emails";
+import EmailList from "../components/EmailList";
+import ComposeEmail from "../components/ComposeEmail";
 import Table from "../components/Table";
 import "./App.css";
 
@@ -25,6 +26,7 @@ export default class App extends Component {
     super(props);
     this.state = {
       currentWindow: "ADD_CONNECTION",
+      value: 0,
     };
   }
 
@@ -33,6 +35,7 @@ export default class App extends Component {
   }
 
   modifyWindow = (type) => {
+    console.log(type);
     this.setState({ currentWindow: type });
   };
 
@@ -45,21 +48,30 @@ export default class App extends Component {
           <Connections
             connections={connections.connections}
             addConnection={actions.addConnection}
+            modifyWindow={this.modifyWindow}
           ></Connections>
-        ) : (
-          <Emails
+        ) : null}
+        {this.state.currentWindow === "SHOW_MESSAGES" ? (
+          <EmailList
             messages={connections.messages}
             addEmail={actions.addEmail}
-          ></Emails>
-        )}
-        <Table></Table>
-        <button onClick={() => this.modifyWindow("ADD_CONNECTION")}>
-          Connection Tab
-        </button>
-        <button onClick={() => this.modifyWindow("ADD_MESSAGE")}>
-          Email Tab
-        </button>
-        <button>Open new Tabs</button>
+            modifyWindow={this.modifyWindow}
+          ></EmailList>
+        ) : null}
+        {this.state.currentWindow === "ADD_MESSAGE" ? (
+          <ComposeEmail
+            messages={connections.messages}
+            addEmail={actions.addEmail}
+            modifyWindow={this.modifyWindow}
+          ></ComposeEmail>
+        ) : null}
+        {this.state.currentWindow === "SHOW_CONNECTIONS" ? (
+          <Table
+            updateConnection={actions.updateConnection}
+            connections={connections.connections}
+            modifyWindow={this.modifyWindow}
+          ></Table>
+        ) : null}
       </div>
     );
   }
