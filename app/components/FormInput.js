@@ -11,7 +11,6 @@ export default function FormInput(props) {
     <div className="form">
       <form>
         <input
-          className="input"
           name="name"
           placeholder="John Doe"
           value={name}
@@ -19,7 +18,6 @@ export default function FormInput(props) {
         />
         <hr />
         <input
-          className="input"
           name="company"
           defaultValue={company}
           placeholder="Apple Inc."
@@ -27,7 +25,6 @@ export default function FormInput(props) {
         />
         <hr />
         <input
-          className="input"
           name="mutual"
           value={mutual}
           placeholder="Marry Doe, Adam Lambert, ..."
@@ -36,19 +33,21 @@ export default function FormInput(props) {
         <hr />
 
         <input
-          className="input"
           name="notes"
           value={notes}
           placeholder="LinkedIn Cold Email, Resume Review ..."
           onChange={(e) => setNotes(e.target.value)}
         />
         <hr />
-
         <button
           type="submit"
           onClick={(e) => {
             e.preventDefault();
             props.handleSubmit({ name, company, mutual, notes });
+            setName("");
+            setMutual("");
+            setCompany("");
+            setNotes("");
           }}
         >
           Submit
