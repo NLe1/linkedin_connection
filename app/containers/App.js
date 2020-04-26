@@ -3,7 +3,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import Form from "../components/Form";
 import * as ConnectionActions from "../actions/connections";
-import style from "./App.css";
+import "./App.css";
 
 @connect(
   (state) => ({
@@ -19,16 +19,19 @@ export default class App extends Component {
     actions: PropTypes.object.isRequired,
   };
 
+  renderConnections = (connections) => {
+    console.log(connections);
+    connections.map((connection) => <li>{connection.name}</li>);
+  };
+
   render() {
     const { connections, actions } = this.props;
 
     return (
       <div>
-        {/* <ul>
-          {Object.keys(connections).length > 0
-            ? connections.map((connection) => <li>{connection}</li>)
-            : null}
-        </ul> */}
+        {connections ? (
+          <ul>{this.renderConnections(connections.connections)}</ul>
+        ) : null}
         <Form connections={connections} addConnection={actions.addConnection} />
       </div>
     );
