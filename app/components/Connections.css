@@ -1,0 +1,114 @@
+#widget {
+  position: fixed;
+  right: 80px;
+  width: 230px;
+  background: #374d59;
+  box-shadow: 0px 0px 24px rgba(40, 62, 74, 0.5);
+  border-radius: 0px 0px 8px 8px;
+  padding: 28px;
+  text-align: center;
+}
+
+section div {
+  display: flex;
+}
+
+#occupation {
+  display: flex;
+  flex-direction: column;
+}
+
+#connections {
+  background: pink;
+  justify-self: center;
+  align-self: center;
+  display: flex;
+  padding: 8px 0;
+  height: 20px;
+  width: 226px;
+}
+
+textarea {
+  width: 214px;
+  min-height: 120px;
+  background: #e1e9ee;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  resize: none;
+}
+
+#redirect {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+#fullName,
+#occupation,
+#connections,
+#notes {
+  margin-bottom: 20px;
+}
+
+/*** Typography *********************************/
+
+#fullName {
+  display: flex;
+  font-weight: 500;
+  font-size: 24px;
+  color: #ffffff;
+}
+
+#fullName p:first-child {
+  padding-right: 8px;
+}
+
+#occupation p {
+  padding-left: 8px;
+  padding-bottom: 8px;
+  color: #caccce;
+}
+
+#redirect a {
+  margin-top: 20px;
+  color: #caccce;
+}
+
+/*** Images, Logos, and Buttons *********************************/
+
+#linkedUpLogo {
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.icon {
+  /** Placeholder **/
+  width: 10px;
+  height: 10px;
+  background: pink;
+  padding-right: 8px;
+}
+
+#redirect button a,
+button a {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+}
+
+#newMessage {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 28px;
+  right: 28px;
+}
+
+#composeMessage {
+  width: fit-content;
+}

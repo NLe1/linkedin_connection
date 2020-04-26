@@ -13,7 +13,7 @@ export default function Form(props) {
     <div>
       <h2>Add Email Template</h2>
       <EmailForm handleSubmit={handleSubmit} />
-      <EmailList messages={props.messages} />
+      {/* <EmailList messages={props.messages} /> */}
     </div>
   );
 }

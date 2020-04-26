@@ -1,0 +1,117 @@
+#widget {
+  position: fixed;
+  right: 0;
+  width: 400px;
+  height: 100%;
+  background: #374d59;
+  box-shadow: 0px 0px 24px rgba(40, 62, 74, 0.5);
+  padding: 28px;
+  text-align: center;
+}
+
+.messageTitle {
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+#newMessage form {
+  margin-top: 40px;
+}
+
+#newMessage form input {
+  padding: 10px;
+  height: 30px;
+  border: none;
+  border-bottom: 1px solid #4f4f4f;
+  background: #e1e9ee;
+  border-radius: 4px 4px 0 0;
+  font-size: 16px;
+}
+
+textarea {
+  width: 380px;
+  min-height: 260px;
+  background: #e1e9ee;
+  padding: 20px 10px;
+  border: none;
+  border-radius: 0 0 4px 4px;
+  resize: none;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+#importantPoints {
+  min-height: 100px;
+  background: #abcee0;
+}
+
+/*** Typography *********************************/
+
+.messageTitle {
+  text-align: left;
+  font-weight: 500;
+  font-size: 24px;
+  color: #ffffff;
+}
+
+#scenarioList {
+  text-align: left;
+}
+
+#scenarioList a {
+  text-decoration: none;
+  color: #e1e9ee;
+  line-height: 40px;
+}
+
+#scenarioList a:hover {
+  color: #0077b5;
+}
+
+/*** Images and Buttons *********************************/
+
+#composeMessage {
+  position: absolute;
+  width: 90px;
+  top: 28px;
+  right: 28px;
+}
+
+#saveMessage {
+  position: absolute;
+  width: 90px;
+  bottom: 100px;
+  right: 28px;
+}
+
+#redirect button a,
+button a {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+}
+
+#backgroundFilter {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #4f4f4f;
+  z-index: -2;
+  opacity: 50%;
+}
+
+#textFormat {
+  display: flex;
+  color: #fff;
+}
+
+#textFormat img {
+  margin: 20px 20px 0 0;
+}

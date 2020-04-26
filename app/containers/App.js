@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import * as ConnectionActions from "../actions/connections";
 import Connections from "../components/Connections";
 import Emails from "../components/Emails";
+import Table from "../components/Table";
 import "./App.css";
 
 @connect(
@@ -51,6 +52,7 @@ export default class App extends Component {
             addEmail={actions.addEmail}
           ></Emails>
         )}
+        <Table></Table>
         <button onClick={() => this.modifyWindow("ADD_CONNECTION")}>
           Connection Tab
         </button>
