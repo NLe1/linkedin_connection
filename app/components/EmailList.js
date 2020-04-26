@@ -4,7 +4,11 @@ import EmailItem from "./EmailItem.js";
 export default function EmailList(props) {
   const renderConnection = (messages) => {
     return messages.map((message) => (
-      <EmailItem key={message} message={message}></EmailItem>
+      <EmailItem
+        chooseCurrentMessage={props.chooseCurrentMessage}
+        key={message}
+        message={message}
+      ></EmailItem>
     ));
   };
   return (
@@ -15,10 +19,17 @@ export default function EmailList(props) {
             fontSize: "30px",
             color: "#fff",
             fontWeight: "bold",
+            marginBottom: "20px",
           }}
         >
           Scenario
         </h1>
+        <span
+          onClick={() => props.modifyWindow("ADD_CONNECTION")}
+          style={{ display: "inline", color: "#CACCCE", marginBottom: "20px" }}
+        >
+          <u>add connection</u>
+        </span>
         <button onClick={() => props.modifyWindow("ADD_MESSAGE")}>
           Add New
         </button>

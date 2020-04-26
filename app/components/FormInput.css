@@ -11,7 +11,7 @@ form {
 }
 
 textarea {
-    background: #E1E9EE;
+    background: #ABCEE0;
     min-height: 120px;
     padding: 8px;
     border: none;
@@ -19,7 +19,6 @@ textarea {
     resize: none;
     flex: 1;
     min-height: 200px;
-    width: 100%;
     font-size: 16px;
     align-items: flex-start;
     align-content: flex-start;

@@ -27,12 +27,19 @@ export default class App extends Component {
     this.state = {
       currentWindow: "ADD_CONNECTION",
       value: 0,
+      curMessage: {},
     };
   }
 
   componentDidUpdate() {
     console.log(this.props.connections);
   }
+
+  chooseCurrentMessage = (message = {}) => {
+    console.log(message);
+    this.setState({ curMessage: message });
+    this.modifyWindow("ADD_MESSAGE");
+  };
 
   modifyWindow = (type) => {
     console.log(type);
@@ -56,10 +63,12 @@ export default class App extends Component {
             messages={connections.messages}
             addEmail={actions.addEmail}
             modifyWindow={this.modifyWindow}
+            chooseCurrentMessage={this.chooseCurrentMessage}
           ></EmailList>
         ) : null}
         {this.state.currentWindow === "ADD_MESSAGE" ? (
           <ComposeEmail
+            curMessage={this.state.curMessage}
             messages={connections.messages}
             addEmail={actions.addEmail}
             modifyWindow={this.modifyWindow}

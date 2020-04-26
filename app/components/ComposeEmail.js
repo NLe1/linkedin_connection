@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 
 export default function ComposeEmail(props) {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [reminder, setReminder] = useState("");
+  const { title, content, reminder } = props.curMessage;
+  const [curTitle, setTitle] = useState(title || "Cold Email Template ... ");
+  const [curContent, setContent] = useState(content || "Dear [Recruiter], ...");
+  const [curReminder, setReminder] = useState(
+    reminder || "List of key reminding notes (comma separated)"
+  );
   return (
     <div>
       <section className="messageTitle">
@@ -37,21 +40,19 @@ export default function ComposeEmail(props) {
         <form>
           <input
             name="email"
-            placeholder="Cold Email Template ... "
-            value={title}
+            value={curTitle}
             onChange={(e) => setTitle(e.target.value)}
           />
-          <input
-            style={{ height: "300px" }}
+          <textarea
+            style={{ minHeight: "300px", background: "#E1E9EE", flex: "1" }}
             name="email"
-            placeholder="Dear [Recruiter], ... "
-            value={content}
+            value={curContent}
             onChange={(e) => setContent(e.target.value)}
           />
           <input
+            style={{ minHeight: "120px", background: "#ABCEE0", flex: "1", color:"#496574" }}
             name="email"
-            placeholder="List of key reminding notes (comma separated)"
-            value={reminder}
+            value={curReminder}
             onChange={(e) => setReminder(e.target.value)}
           />
         </form>
@@ -95,7 +96,11 @@ export default function ComposeEmail(props) {
         id="saveMessage"
         onClick={(e) => {
           e.preventDefault();
-          props.addEmail({ title, content, reminder });
+          props.addEmail({
+            title: curTitle,
+            content: curContent,
+            reminder: curReminder,
+          });
           props.modifyWindow("SHOW_MESSAGES");
         }}
       >
