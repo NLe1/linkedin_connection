@@ -1,5 +1,4 @@
 import React from "react";
-import "./Form.css";
 import FormInput from "./FormInput";
 
 export default function Form(props) {
@@ -11,7 +10,10 @@ export default function Form(props) {
 
   return (
     <div>
-      <FormInput handleSubmit={handleSubmit} />
+      <FormInput
+        modifyWindow={props.modifyWindow}
+        handleSubmit={handleSubmit}
+      />
     </div>
   );
 }

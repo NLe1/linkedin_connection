@@ -7,3 +7,11 @@ export function addConnection(data) {
 export function getConnections() {
   return { type: types.GET_CONNECTIONS };
 }
+
+export function addEmail(data) {
+  return { type: types.ADD_EMAIL, payload: data };
+}
+
+export function updateConnection(data) {
+  return { type: types.UPDATE_CONNECTION, payload: data };
+}
