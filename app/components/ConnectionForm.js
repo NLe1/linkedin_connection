@@ -1,5 +1,5 @@
 import React from "react";
-import "./Form.css";
+import "./ConnectionForm.css";
 import FormInput from "./FormInput";
 
 export default function Form(props) {

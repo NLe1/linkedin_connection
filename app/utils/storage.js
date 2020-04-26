@@ -1,5 +1,5 @@
 function saveState(state) {
-  chrome.storage.local.set({ state: JSON.stringify(state) }, (obj) => {});
+  chrome.storage.local.set({ state: JSON.stringify(state) });
 }
 
 // connections unmarked count
@@ -18,7 +18,7 @@ export default function () {
     store.subscribe(() => {
       const state = store.getState();
       saveState(state);
-      setBadge(state.connections);
+      setBadge(state.connections.connections);
     });
     return store;
   };
