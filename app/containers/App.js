@@ -6,7 +6,6 @@ import Connections from "../components/Connections";
 import EmailList from "../components/EmailList";
 import ComposeEmail from "../components/ComposeEmail";
 import Table from "../components/Table";
-import "./App.css";
 
 @connect(
   (state) => ({

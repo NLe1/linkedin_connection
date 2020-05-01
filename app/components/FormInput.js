@@ -1,7 +1,23 @@
 import React, { PropTypes, useState } from "react";
-import "./FormInput.css";
+// import "./FormInput.css";
+import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    flexWrap: "wrap",
+    backgroundColor: theme.palette.background.paper,
+  },
+  textField: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+  },
+}));
 
 export default function FormInput(props) {
+  const classes = useStyles();
+
   const [name, setName] = useState("");
   const [company, setCompany] = useState("");
   const [notes, setNotes] = useState("");
@@ -10,45 +26,74 @@ export default function FormInput(props) {
   const [doneSubmit, setDone] = useState(false);
 
   return (
-    <div className="form">
+    <div className={classes.root}>
       {!doneSubmit ? (
-        <form>
-          <input
-            id="name"
-            name="name"
+        <div>
+          <TextField
+            id="standard-full-width"
+            label="Name"
+            style={{ margin: 8 }}
+            placeholder="Erlich Bachman"
+            fullWidth
+            margin="normal"
             value={name}
-            placeholder="John Doe"
             onChange={(e) => setName(e.target.value)}
+            InputLabelProps={{
+              shrink: true,
+            }}
           />
-
-          <inputm
-            id="company"
-            name="company"
-            defaultValue={company}
-            placeholder="Apple Inc."
+          <TextField
+            id="standard-full-width"
+            label="Company"
+            style={{ margin: 8 }}
+            placeholder="Piped Piper"
+            fullWidth
+            margin="normal"
+            value={company}
             onChange={(e) => setCompany(e.target.value)}
+            InputLabelProps={{
+              shrink: true,
+            }}
           />
-          <input
-            id="howtoMeet"
-            name="howToMeet"
-            value={howToMeet}
-            placeholder="Linkedin Reachout, Resume Review,..."
-            onChange={(e) => setHowToMeet(e.target.value)}
-          />
-          <input
-            id="lastContact"
-            type="date"
-            name="lastContact"
-            placeholder={new Date().toISOString().split("T")[0]}
-            onChange={(e) => setLastContact(e.target.value)}
-          />
-
-          <input
-            id="notes"
-            name="notes"
+          <TextField
+            id="standard-full-width"
+            label="Name"
+            style={{ margin: 8 }}
+            placeholder="Investor, ..."
+            fullWidth
+            margin="normal"
             value={notes}
-            placeholder="SJSU Alumni, Passionate in helping people"
             onChange={(e) => setNotes(e.target.value)}
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+          <TextField
+            id="standard-full-width"
+            label="How did you meet ?"
+            style={{ margin: 8 }}
+            placeholder="Incubator XYZ"
+            fullWidth
+            margin="normal"
+            value={howToMeet}
+            onChange={(e) => setHowToMeet(e.target.value)}
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+          <TextField
+            id="standard-full-width"
+            label="Name"
+            type="date"
+            style={{ margin: 8 }}
+            defaultValue="2020-04-24"
+            fullWidth
+            margin="normal"
+            value={lastContact}
+            onChange={(e) => setLastContact(e.target.value)}
+            InputLabelProps={{
+              shrink: true,
+            }}
           />
 
           <button
@@ -74,7 +119,7 @@ export default function FormInput(props) {
           >
             Submit
           </button>
-        </form>
+        </div>
       ) : (
         <div
           style={{
@@ -87,7 +132,6 @@ export default function FormInput(props) {
             style={{
               fontSize: "30px",
               fontWeight: "bold",
-              color: "white",
               paddingBottom: "20px",
             }}
           >
@@ -111,12 +155,12 @@ export default function FormInput(props) {
                 fill-rule="evenodd"
                 clip-rule="evenodd"
                 d="M90 30C90 46.575 76.575 60 60 60C43.425 60 30 46.575 30 30C30 13.425 43.425 0 60 0C76.575 0 90 13.425 90 30ZM0 105C0 85.05 39.975 75 60 75C80.025 75 120 85.05 120 105V112.5C120 116.625 116.625 120 112.5 120H7.5C3.375 120 0 116.625 0 112.5V105Z"
-                fill="white"
+                fill="black"
               />
               <circle cx="108" cy="80" r="20" fill="#0077B5" />
               <path
                 d="M104.483 84.9304L100.134 80.5153C99.8997 80.277 99.5818 80.1432 99.2502 80.1432C98.9187 80.1432 98.6008 80.277 98.3666 80.5153C97.8778 81.0115 97.8778 81.8131 98.3666 82.3093L103.606 87.6278C104.094 88.1241 104.884 88.1241 105.373 87.6278L118.633 74.1662C119.122 73.67 119.122 72.8684 118.633 72.3721C118.399 72.1339 118.081 72 117.75 72C117.418 72 117.1 72.1339 116.866 72.3721L104.483 84.9304Z"
-                fill="white"
+                fill="black"
               />
             </svg>
           </span>
