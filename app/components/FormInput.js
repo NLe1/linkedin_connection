@@ -2,12 +2,20 @@ import React, { PropTypes, useState } from "react";
 // import "./FormInput.css";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
+import { Button } from "@material-ui/core";
+import Avatar from "@material-ui/core/Avatar";
+import AvatarGroup from "@material-ui/lab/AvatarGroup";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexWrap: "wrap",
     backgroundColor: theme.palette.background.paper,
+  },
+  buttonAlign: {
+    "& > *": {
+      marginRight: theme.spacing(1),
+    },
   },
   textField: {
     marginLeft: theme.spacing(1),
@@ -17,6 +25,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function FormInput(props) {
   const classes = useStyles();
+  const randomURL = () => {
+    return `https://api.adorable.io/avatars/${int(Math.random() * 1000)}`;
+  };
 
   const [name, setName] = useState("");
   const [company, setCompany] = useState("");
@@ -27,12 +38,20 @@ export default function FormInput(props) {
 
   return (
     <div className={classes.root}>
+      <div style={{ alignItems: "center" }}>
+        <AvatarGroup max={3}>
+          <Avatar alt="Remy Sharp" src={randomURL} />
+          <Avatar alt="Travis Howard" src={randomURL} />
+          <Avatar alt="Cindy Baker" src={randomURL} />
+          <Avatar alt="Cindy Baker" src={randomURL} />
+        </AvatarGroup>
+        +12
+      </div>
       {!doneSubmit ? (
         <div>
           <TextField
             id="standard-full-width"
             label="Name"
-            style={{ margin: 8 }}
             placeholder="Erlich Bachman"
             fullWidth
             margin="normal"
@@ -45,7 +64,6 @@ export default function FormInput(props) {
           <TextField
             id="standard-full-width"
             label="Company"
-            style={{ margin: 8 }}
             placeholder="Piped Piper"
             fullWidth
             margin="normal"
@@ -58,7 +76,6 @@ export default function FormInput(props) {
           <TextField
             id="standard-full-width"
             label="Name"
-            style={{ margin: 8 }}
             placeholder="Investor, ..."
             fullWidth
             margin="normal"
@@ -71,7 +88,6 @@ export default function FormInput(props) {
           <TextField
             id="standard-full-width"
             label="How did you meet ?"
-            style={{ margin: 8 }}
             placeholder="Incubator XYZ"
             fullWidth
             margin="normal"
@@ -85,7 +101,6 @@ export default function FormInput(props) {
             id="standard-full-width"
             label="Name"
             type="date"
-            style={{ margin: 8 }}
             defaultValue="2020-04-24"
             fullWidth
             margin="normal"
@@ -95,37 +110,44 @@ export default function FormInput(props) {
               shrink: true,
             }}
           />
+          <div className={classes.buttonAlign}>
+            <Button
+              variant="outlined"
+              onClick={(e) => {
+                e.preventDefault();
+                props.handleSubmit({
+                  name,
+                  company,
+                  notes,
+                  howToMeet,
+                  lastContact,
+                });
+                setName("");
+                setCompany("");
+                setNotes("");
+                setHowToMeet("");
+                setLastContact("");
+                setDone(true);
+              }}
+            >
+              Submit
+            </Button>
 
-          <button
-            className="button"
-            id="submit"
-            type="submit"
-            onClick={(e) => {
-              e.preventDefault();
-              props.handleSubmit({
-                name,
-                company,
-                notes,
-                howToMeet,
-                lastContact,
-              });
-              setName("");
-              setCompany("");
-              setNotes("");
-              setHowToMeet("");
-              setLastContact("");
-              setDone(true);
-            }}
-          >
-            Submit
-          </button>
+            <Button
+              color="primary"
+              onClick={() => props.modifyWindow("SHOW_CONNECTIONS")}
+            >
+              See Lists
+            </Button>
+          </div>
         </div>
       ) : (
         <div
           style={{
+            width: "100%",
             display: "flex",
             flexDirection: "column",
-            justifyContent: "center",
+            alignItems: "center",
           }}
         >
           <h1
@@ -164,11 +186,18 @@ export default function FormInput(props) {
               />
             </svg>
           </span>
+          <Button
+            color="primary"
+            onClick={() => props.modifyWindow("SHOW_CONNECTIONS")}
+          >
+            See Lists
+          </Button>
         </div>
       )}
-      <u>
-        <a onClick={() => props.modifyWindow("SHOW_CONNECTIONS")}>See Lists</a>
-      </u>
+
+      {/* <u>
+        <a >See Lists</a>
+      </u> */}
     </div>
   );
 }
