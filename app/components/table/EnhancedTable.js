@@ -40,8 +40,9 @@ const IndeterminateCheckbox = React.forwardRef(
 
 const inputStyle = {
   padding: 0,
-  margin: 0,
+  margin: 10,
   border: 0,
+  width: 150,
   background: "transparent",
 };
 

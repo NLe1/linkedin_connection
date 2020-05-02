@@ -14,12 +14,11 @@ import TextField from "@material-ui/core/TextField";
 import Tooltip from "@material-ui/core/Tooltip";
 
 const initialUser = {
-  firstName: "",
-  lastName: "",
-  age: 0,
-  visits: 0,
-  status: "single",
-  progress: 0,
+  name: "",
+  company: "",
+  notes: "",
+  howToMeet: "",
+  lastContact: "",
   subRows: undefined,
 };
 

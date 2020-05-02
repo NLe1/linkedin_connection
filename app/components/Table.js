@@ -1,6 +1,17 @@
 import React, { useState, useMemo } from "react";
 import EnhancedTable from "./table/EnhancedTable";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  buttonGroup: {
+    "& > *": {
+      margin: "10px",
+      marginRight: theme.spacing(1),
+    },
+  },
+}));
 
 const Table = (props) => {
   const columns = React.useMemo(
@@ -54,11 +65,29 @@ const Table = (props) => {
     );
   };
 
+  const classes = useStyles();
+
   return (
     <div>
-      <button onClick={() => props.modifyWindow("SHOW_MESSAGES")}>
-        Message Templates
-      </button>
+      <div className={classes.buttonGroup}>
+        <Button
+          variant="contained"
+          onClick={() => {
+            props.modifyWindow("SHOW_MESSAGES");
+          }}
+        >
+          TEMPLATES
+        </Button>
+        <Button
+          variant="contained"
+          onClick={() => {
+            props.modifyWindow("ADD_CONNECTION");
+          }}
+          color="primary"
+        >
+          ADD CONNECTION
+        </Button>
+      </div>
       <CssBaseline />
       <EnhancedTable
         updateConnection={props.updateConnection}

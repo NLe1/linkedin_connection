@@ -1,16 +1,17 @@
-import React, { PropTypes, useState } from "react";
+import React, { useState } from "react";
 // import "./FormInput.css";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
-import Avatar from "@material-ui/core/Avatar";
-import AvatarGroup from "@material-ui/lab/AvatarGroup";
+import Logo from "./Logo";
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    padding: "20px",
     display: "flex",
     flexWrap: "wrap",
     backgroundColor: theme.palette.background.paper,
+    alignItems: "center",
   },
   buttonAlign: {
     "& > *": {
@@ -25,9 +26,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function FormInput(props) {
   const classes = useStyles();
-  const randomURL = () => {
-    return `https://api.adorable.io/avatars/${int(Math.random() * 1000)}`;
-  };
 
   const [name, setName] = useState("");
   const [company, setCompany] = useState("");
@@ -38,15 +36,7 @@ export default function FormInput(props) {
 
   return (
     <div className={classes.root}>
-      <div style={{ alignItems: "center" }}>
-        <AvatarGroup max={3}>
-          <Avatar alt="Remy Sharp" src={randomURL} />
-          <Avatar alt="Travis Howard" src={randomURL} />
-          <Avatar alt="Cindy Baker" src={randomURL} />
-          <Avatar alt="Cindy Baker" src={randomURL} />
-        </AvatarGroup>
-        +12
-      </div>
+      <Logo></Logo>
       {!doneSubmit ? (
         <div>
           <TextField
@@ -194,10 +184,6 @@ export default function FormInput(props) {
           </Button>
         </div>
       )}
-
-      {/* <u>
-        <a >See Lists</a>
-      </u> */}
     </div>
   );
 }

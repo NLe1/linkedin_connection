@@ -1,6 +1,6 @@
 chrome.storage.local.get("state", (obj) => {
   let connections = obj.connections;
-  if (connections) {
+  if (connections != undefined) {
     connections = JSON.parse(connections);
     const len = connections.length;
     if (len > 0) {

@@ -17,6 +17,7 @@ export default function () {
     const store = next(reducer, initialState);
     store.subscribe(() => {
       const state = store.getState();
+      console.log(state);
       saveState(state);
       setBadge(state.connections.connections);
     });

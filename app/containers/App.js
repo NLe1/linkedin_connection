@@ -6,7 +6,6 @@ import Connections from "../components/Connections";
 import EmailList from "../components/EmailList";
 import ComposeEmail from "../components/ComposeEmail";
 import Table from "../components/Table";
-
 @connect(
   (state) => ({
     connections: state.connections,
@@ -17,7 +16,7 @@ import Table from "../components/Table";
 )
 export default class App extends Component {
   static propTypes = {
-    connections: PropTypes.array.isRequired,
+    connections: PropTypes.object.isRequired,
     actions: PropTypes.object.isRequired,
   };
 
@@ -30,18 +29,12 @@ export default class App extends Component {
     };
   }
 
-  componentDidUpdate() {
-    console.log(this.props.connections);
-  }
-
   chooseCurrentMessage = (message = {}) => {
-    console.log(message);
     this.setState({ curMessage: message });
     this.modifyWindow("ADD_MESSAGE");
   };
 
   modifyWindow = (type) => {
-    console.log(type);
     this.setState({ currentWindow: type });
   };
 
@@ -62,6 +55,7 @@ export default class App extends Component {
             messages={connections.messages}
             addEmail={actions.addEmail}
             modifyWindow={this.modifyWindow}
+            deleteEmail={actions.deleteEmail}
             chooseCurrentMessage={this.chooseCurrentMessage}
           ></EmailList>
         ) : null}
@@ -70,6 +64,8 @@ export default class App extends Component {
             curMessage={this.state.curMessage}
             messages={connections.messages}
             addEmail={actions.addEmail}
+            chooseCurrentMessage={this.chooseCurrentMessage}
+            deleteEmail={actions.deleteEmail}
             modifyWindow={this.modifyWindow}
           ></ComposeEmail>
         ) : null}

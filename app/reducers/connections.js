@@ -1,36 +1,41 @@
 import * as ActionTypes from "../constants/ActionTypes";
 
-const initialState = { connections: [], messages: [] };
+const initialState = { connections: { connections: [], messages: [] } };
 
 const actionsMap = {
-  [ActionTypes.ADD_CONNECTION](state, action) {
-    if (Object.keys(state).length == 0) {
-      state.connections = Array();
-      state.messages = Array();
+  [ActionTypes.ADD_CONNECTION](state = initialState, action) {
+    if (state.connections === undefined) {
+      state.connections = [];
     }
     return {
       ...state,
       connections: [...state.connections, action.payload],
     };
   },
-  [ActionTypes.ADD_EMAIL](state, action) {
-    if (Object.keys(state).length == 0) {
-      state.connections = Array();
-      state.messages = Array();
+  [ActionTypes.ADD_EMAIL](state = initialState, action) {
+    if (state.messages === undefined) {
+      state.messages = [];
     }
     return {
       ...state,
       messages: [...state.messages, action.payload],
     };
   },
-  [ActionTypes.UPDATE_CONNECTION](state, action) {
+  [ActionTypes.DELETE_EMAIL](state = initialState, action) {
+    const newMessage = state.messages.filter(
+      (msg) => msg.id !== action.payload
+    );
+    return {
+      ...state,
+      messages: newMessage,
+    };
+  },
+  [ActionTypes.UPDATE_CONNECTION](state = initialState, action) {
+    console.log(state);
     return {
       ...state,
       connections: action.payload,
     };
-  },
-  [ActionTypes.GET_CONNECTIONS](state, action) {
-    return state;
   },
 };
 
