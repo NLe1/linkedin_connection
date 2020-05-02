@@ -44,12 +44,14 @@ export default function EmailList(props) {
         </h1>
         <div className={classes.buttonGroup}>
           <Button
+            size="small"
             variant="contained"
             onClick={() => props.modifyWindow("ADD_CONNECTION")}
           >
             ADD CONNECTION
           </Button>
           <Button
+            size="small"
             variant="contained"
             onClick={() => props.modifyWindow("ADD_MESSAGE")}
             color="primary"

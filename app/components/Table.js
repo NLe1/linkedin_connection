@@ -3,6 +3,8 @@ import EnhancedTable from "./table/EnhancedTable";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
+import SaveIcon from "@material-ui/icons/Save";
+import { CSVLink } from "react-csv";
 
 const useStyles = makeStyles((theme) => ({
   buttonGroup: {
@@ -65,27 +67,55 @@ const Table = (props) => {
     );
   };
 
+  const exportData = () => {
+    //update currentData to store before attempt to download
+    props.updateConnection(data);
+    console.log(props.connections);
+    return props.connections;
+  };
+
   const classes = useStyles();
 
   return (
     <div>
       <div className={classes.buttonGroup}>
         <Button
+          size="small"
           variant="contained"
           onClick={() => {
+            props.updateConnection(data);
             props.modifyWindow("SHOW_MESSAGES");
           }}
         >
           TEMPLATES
         </Button>
         <Button
+          size="small"
           variant="contained"
           onClick={() => {
+            props.updateConnection(data);
             props.modifyWindow("ADD_CONNECTION");
           }}
           color="primary"
         >
           ADD CONNECTION
+        </Button>
+        <Button size="small" variant="contained" startIcon={<SaveIcon />}>
+          <CSVLink
+            filename={"connections.csv"}
+            data={data}
+            asyncOnClick={true}
+            onClick={() => {
+              console.log("Updating to the store for exporting ... ");
+              //update the state store
+              props.updateConnection(data);
+
+              //invoke the logic component
+              done();
+            }}
+          >
+            EXPORT TO CSV
+          </CSVLink>
         </Button>
       </div>
       <CssBaseline />

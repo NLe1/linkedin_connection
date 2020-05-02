@@ -12,6 +12,7 @@ import PropTypes from "prop-types";
 import Switch from "@material-ui/core/Switch";
 import TextField from "@material-ui/core/TextField";
 import Tooltip from "@material-ui/core/Tooltip";
+import { v4 as uuidv4 } from "uuid";
 
 const initialUser = {
   name: "",
@@ -19,6 +20,7 @@ const initialUser = {
   notes: "",
   howToMeet: "",
   lastContact: "",
+  id: uuidv4(),
   subRows: undefined,
 };
 
@@ -61,7 +63,7 @@ const AddUserDialog = (props) => {
   return (
     <div>
       <Tooltip title="Add">
-        <IconButton aria-label="add" onClick={handleClickOpen}>
+        <IconButton size="small" aria-label="add" onClick={handleClickOpen}>
           <AddIcon />
         </IconButton>
       </Tooltip>
@@ -114,10 +116,10 @@ const AddUserDialog = (props) => {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleClose} color="primary" size="small">
             Cancel
           </Button>
-          <Button onClick={handleAdd} color="primary">
+          <Button onClick={handleAdd} color="primary" size="small">
             Add
           </Button>
         </DialogActions>

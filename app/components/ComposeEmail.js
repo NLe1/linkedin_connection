@@ -29,6 +29,7 @@ export default function ComposeEmail(props) {
   return (
     <div style={{ padding: "5px" }}>
       <IconButton
+        size="small"
         aria-label="back"
         onClick={(e) => {
           e.preventDefault();
@@ -68,6 +69,7 @@ export default function ComposeEmail(props) {
 
       <section style={{ display: "inline" }} id="textFormat">
         <IconButton
+          size="small"
           aria-label="back"
           onClick={() => {
             el.select();
@@ -79,6 +81,7 @@ export default function ComposeEmail(props) {
         </IconButton>
 
         <Button
+          size="small"
           color="primary"
           onClick={(e) => {
             e.preventDefault();

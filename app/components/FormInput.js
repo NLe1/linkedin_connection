@@ -65,8 +65,8 @@ export default function FormInput(props) {
           />
           <TextField
             id="standard-full-width"
-            label="Name"
-            placeholder="Investor, ..."
+            label="Notes"
+            placeholder="Investor, SJSU Alumni ..."
             fullWidth
             margin="normal"
             value={notes}
@@ -89,7 +89,7 @@ export default function FormInput(props) {
           />
           <TextField
             id="standard-full-width"
-            label="Name"
+            label="Last Contact Date"
             type="date"
             defaultValue="2020-04-24"
             fullWidth
@@ -102,6 +102,7 @@ export default function FormInput(props) {
           />
           <div className={classes.buttonAlign}>
             <Button
+              size="small"
               variant="outlined"
               onClick={(e) => {
                 e.preventDefault();
@@ -124,6 +125,7 @@ export default function FormInput(props) {
             </Button>
 
             <Button
+              size="small"
               color="primary"
               onClick={() => props.modifyWindow("SHOW_CONNECTIONS")}
             >
@@ -177,6 +179,7 @@ export default function FormInput(props) {
             </svg>
           </span>
           <Button
+            size="small"
             color="primary"
             onClick={() => props.modifyWindow("SHOW_CONNECTIONS")}
           >
